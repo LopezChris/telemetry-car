@@ -14,36 +14,36 @@ var dashRoutes = [
     icon: "design_app",
     component: Dashboard
   },
-  { path: "/icons", name: "Icons", icon: "design_image", component: Icons },
-  { path: "/maps", name: "Maps", icon: "location_map-big", component: Maps },
+  { path: "/icons", name: "Sensors", icon: "design_image", component: Icons },
+  { path: "/maps", name: "Lane-Curvature", icon: "location_map-big", component: Maps },
   {
     path: "/notifications",
-    name: "Notifications",
+    name: "Behavior-Cloning",
     icon: "ui-1_bell-53",
     component: Notifications
   },
   {
     path: "/user-page",
-    name: "User Profile",
+    name: "Kalman-Filters",
     icon: "users_single-02",
     component: UserPage
   },
   {
     path: "/extended-tables",
-    name: "Table List",
+    name: "Localization",
     icon: "files_paper",
     component: TableList
   },
   {
     path: "/typography",
-    name: "Typography",
+    name: "Path-Planning",
     icon: "design-2_ruler-pencil",
     component: Typography
   },
   {
     pro: true,
     path: "/upgrade",
-    name: "Upgrade to PRO",
+    name: "Self-Driving",
     icon: "objects_spaceship",
     component: Upgrade
   },
