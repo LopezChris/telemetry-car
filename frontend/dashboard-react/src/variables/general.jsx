@@ -4,17 +4,37 @@
 
 const tasks = [
   {
-    checked: true,
-    text: 'Sign contract for "What are conference organizers afraid of?"'
+    checked: false,
+    text: 'Is Traxxas Battery (NiMH or LiPIO) fully charged for ESC?'
   },
   {
     checked: false,
-    text: "Lines From Great Russian Literature? Or E-mails From My Boss?"
+    text: "Is Energizer XP18000 Battery fully charged for Jetson TX2, sensors and USB hub?"
   },
   {
-    checked: true,
+    checked: false,
     text:
-      "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit"
+      "Is the Jetson TX2 and LiDAR connected correctly to the Energizer XP18000 Battery?"
+  },
+  {
+    checked: false,
+    text:
+      "Is the ESC connected correctly to the Traxxas Battery?"
+  },
+  {
+    checked: false,
+    text:
+      "Is the 7 Port USB Hub connected to the Jetson TX2?"
+  },
+  {
+    checked: false,
+    text:
+      "Is the Camera and IMU sensor connected to a port on the 7 Port USB Hub?"
+  },
+  {
+    checked: false,
+    text:
+      "Is the LiDAR connected to the Jetson TX2?"
   }
 ];
 
@@ -22,11 +42,11 @@ const tasks = [
 // // // table head data and table body data for Tables view
 // #############################
 
-const thead = ["Name", "Country", "City", "Salary"];
+const thead = ["Name", "Details"];
 const tbody = [
   {
     className: "table-success",
-    data: ["Dakota Rice", "Niger", "Oud-Turnhout", "$36,738"]
+    data: ["Year", "2019"]
   },
   {
     className: "",
