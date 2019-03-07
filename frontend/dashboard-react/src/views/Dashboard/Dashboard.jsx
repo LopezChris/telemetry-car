@@ -43,11 +43,11 @@ class Dashboard extends React.Component {
         />
         <div className="content">
           <Row>
-            <Col xs={12} md={4}>
+            <Col xs={12} md={12}>
               <Card className="card-chart">
                 <CardHeader>
-                  <CardCategory>Global Sales</CardCategory>
-                  <CardTitle tag="h4">Shipped Products</CardTitle>
+                  <CardCategory>Car Diagram</CardCategory>
+                  <CardTitle tag="h4">E2AI-Car-SDV1</CardTitle>
                   <UncontrolledDropdown>
                     <DropdownToggle
                       className="btn-round btn-simple btn-icon"
@@ -85,76 +85,13 @@ class Dashboard extends React.Component {
                 </CardFooter>
               </Card>
             </Col>
-            <Col xs={12} md={4}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <CardCategory>2018 Sales</CardCategory>
-                  <CardTitle tag="h4">All products</CardTitle>
-                  <UncontrolledDropdown>
-                    <DropdownToggle
-                      className="btn-round btn-simple btn-icon"
-                      color="default"
-                    >
-                      <i className="now-ui-icons loader_gear" />
-                    </DropdownToggle>
-                    <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another Action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
-                      <DropdownItem className="text-danger">
-                        Remove data
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </UncontrolledDropdown>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Line
-                      data={dashboardAllProductsChart.data}
-                      options={dashboardAllProductsChart.options}
-                    />
-                  </div>
-                </CardBody>
-                <CardFooter>
-                  <Stats>
-                    {[
-                      {
-                        i: "now-ui-icons arrows-1_refresh-69",
-                        t: "Just Updated"
-                      }
-                    ]}
-                  </Stats>
-                </CardFooter>
-              </Card>
-            </Col>
-            <Col xs={12} md={4}>
-              <Card className="card-chart">
-                <CardHeader>
-                  <CardCategory>Email Statistics</CardCategory>
-                  <CardTitle tag="h4">24 Hours Performance</CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Bar
-                      data={dashboard24HoursPerformanceChart.data}
-                      options={dashboard24HoursPerformanceChart.options}
-                    />
-                  </div>
-                </CardBody>
-                <CardFooter>
-                  <Stats>
-                    {[{ i: "now-ui-icons ui-2_time-alarm", t: "Last 7 days" }]}
-                  </Stats>
-                </CardFooter>
-              </Card>
-            </Col>
           </Row>
           <Row>
             <Col xs={12} md={6}>
               <Card className="card-tasks">
                 <CardHeader>
-                  <CardCategory>Backend Development</CardCategory>
-                  <CardTitle tag="h4">Tasks</CardTitle>
+                  <CardCategory>Car Demo</CardCategory>
+                  <CardTitle tag="h4">Hardware Checklist</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Tasks tasks={tasks} />
@@ -175,49 +112,53 @@ class Dashboard extends React.Component {
             <Col xs={12} md={6}>
               <Card>
                 <CardHeader>
-                  <CardCategory>All Persons List</CardCategory>
-                  <CardTitle tag="h4">Employees Stats</CardTitle>
+                  <CardCategory>Vechicle Information</CardCategory>
+                  <CardTitle tag="h4">Vehicle Information</CardTitle>
                 </CardHeader>
                 <CardBody>
                   <Table responsive>
                     <thead className=" text-primary">
                       <tr>
                         <th>Name</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th className="text-right">Salary</th>
+                        <th>Details</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Dakota Rice</td>
-                        <td>Niger</td>
-                        <td>Oud-Turnhout</td>
-                        <td className="text-right">$36,738</td>
+                        <td>Year</td>
+                        <td>2019</td>
                       </tr>
                       <tr>
-                        <td>Minerva Hooper</td>
-                        <td>Curaçao</td>
-                        <td>Sinaai-Waas</td>
-                        <td className="text-right">$23,789</td>
+                        <td>Model</td>
+                        <td>E2AI-Car-SDV1</td>
                       </tr>
                       <tr>
-                        <td>Sage Rodriguez</td>
-                        <td>Netherlands</td>
-                        <td>Baileux</td>
-                        <td className="text-right">$56,142</td>
+                        <td>Perception Battery</td>
+                        <td>Energizer 18000</td>
                       </tr>
                       <tr>
-                        <td>Doris Greene</td>
-                        <td>Malawi</td>
-                        <td>Feldkirchen in Kärnten</td>
-                        <td className="text-right">$63,542</td>
+                        <td>Odometry Battery</td>
+                        <td>Traxxas 2923 NiMH</td>
                       </tr>
                       <tr>
-                        <td>Mason Porter</td>
-                        <td>Chile</td>
-                        <td>Gloucester</td>
-                        <td className="text-right">$78,615</td>
+                        <td>Rotational Tracker</td>
+                        <td>Sparkfun 9DOF Razor IMU</td>
+                      </tr>
+                      <tr>
+                        <td>Obstacle Detector</td>
+                        <td>Hokuyo UST-10LX</td>
+                      </tr>
+                      <tr>
+                        <td>Vision</td>
+                        <td>Logitech C9305</td>
+                      </tr>
+                      <tr>
+                        <td>Odometry</td>
+                        <td>Enertion Focbox v1.7</td>
+                      </tr>
+                      <tr>
+                        <td>ECU</td>
+                        <td>Nvidia Jetson TX2</td>
                       </tr>
                     </tbody>
                   </Table>
