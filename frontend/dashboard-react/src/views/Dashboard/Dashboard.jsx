@@ -28,18 +28,22 @@ import {
 
 import { tasks } from "variables/general.jsx";
 
+const clouderaRacewayImg = (
+	<img 
+		src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/hortonworksraceway.jpg?token=ALSrwW9hO85_gwJVkv1KlrsXTkqmQ4Gjks5cjpQHwA%3D%3D"
+		alt="Cloudera Raceway"
+		width="100%"
+		height="120%"
+	/>
+);
+
 class Dashboard extends React.Component {
   render() {
     return (
       <div>
         <PanelHeader
           size="lg"
-          content={
-            <Line
-              data={dashboardPanelChart.data}
-              options={dashboardPanelChart.options}
-            />
-          }
+          content={clouderaRacewayImg}
         />
         <div className="content">
           <Row>
@@ -56,21 +60,19 @@ class Dashboard extends React.Component {
                       <i className="now-ui-icons loader_gear" />
                     </DropdownToggle>
                     <DropdownMenu right>
-                      <DropdownItem>Action</DropdownItem>
-                      <DropdownItem>Another Action</DropdownItem>
-                      <DropdownItem>Something else here</DropdownItem>
-                      <DropdownItem className="text-danger">
-                        Remove data
-                      </DropdownItem>
+                      <DropdownItem>Nvidia Jetson TX2</DropdownItem>
+                      <DropdownItem>Logitech C930</DropdownItem>
+                      <DropdownItem>Hokuyo UST-10LX</DropdownItem>
+                      <DropdownItem>Sparkfun 9DOF Razor IMU</DropdownItem>
+                      <DropdownItem>Enertion Focbox v1.7</DropdownItem>
+                      <DropdownItem>Energizer 18000</DropdownItem>
+                      <DropdownItem>Traxxas 2923 NiMH</DropdownItem>
                     </DropdownMenu>
                   </UncontrolledDropdown>
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
-                    <Line
-                      data={dashboardShippedProductsChart.data}
-                      options={dashboardShippedProductsChart.options}
-                    />
+                  	<img src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/mit_racecar.jpg?token=ALSrweGNd-2i0MWfLQFHSVmvt88ISlI4ks5cjxCbwA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={4000*0.06} width={6000*0.15} />
                   </div>
                 </CardBody>
                 <CardFooter>
