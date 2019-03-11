@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Button,
   Card,
   CardHeader,
   CardBody,
@@ -19,6 +20,8 @@ import { Line, Bar } from "react-chartjs-2";
 
 import { PanelHeader, Stats, CardCategory, Tasks } from "components";
 
+import CarConnectedProgressBar from "components/CardElements/CarConnectedProgressBar";
+
 import {
   dashboardPanelChart,
   dashboardShippedProductsChart,
@@ -32,8 +35,8 @@ const clouderaRacewayImg = (
 	<img 
 		src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/hortonworksraceway.jpg?token=ALSrwW9hO85_gwJVkv1KlrsXTkqmQ4Gjks5cjpQHwA%3D%3D"
 		alt="Cloudera Raceway"
-		width="100%"
-		height="120%"
+		width={(100*1)+'%'}
+		height={(100*1.2)+'%'}
 	/>
 );
 
@@ -47,7 +50,7 @@ class Dashboard extends React.Component {
         />
         <div className="content">
           <Row>
-            <Col xs={12} md={12}>
+            <Col xs={12} md={6}>
               <Card className="card-chart">
                 <CardHeader>
                   <CardCategory>Car Diagram</CardCategory>
@@ -71,9 +74,7 @@ class Dashboard extends React.Component {
                   </UncontrolledDropdown>
                 </CardHeader>
                 <CardBody>
-                  <div className="chart-area">
-                  	<img src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/mit_racecar.jpg?token=ALSrweGNd-2i0MWfLQFHSVmvt88ISlI4ks5cjxCbwA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={4000*0.06} width={6000*0.15} />
-                  </div>
+                  <img src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/mit_racecar.jpg?token=ALSrweGNd-2i0MWfLQFHSVmvt88ISlI4ks5cjxCbwA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
                 </CardBody>
                 <CardFooter>
                   <Stats>
@@ -87,6 +88,32 @@ class Dashboard extends React.Component {
                 </CardFooter>
               </Card>
             </Col>
+            <Col xs={12} md={6}>
+              <Card className="card-chart">
+                <CardHeader>
+                  <CardCategory>Connected Car</CardCategory>
+                  <CardTitle tag="h4">
+                    {/*Press button, onClick, pass flag to ConnectionStatus Component
+                    which returns a green button with word changed to Connected
+                    or a red button for Failed, Retry. */}
+                    <Button color="info">Connect</Button>
+                  </CardTitle>
+                </CardHeader>
+                <CardBody>
+                  <CarConnectedProgressBar />
+                </CardBody>
+                <CardFooter>
+                  <Stats>
+                    {[
+                      {
+                        i: "now-ui-icons arrows-1_refresh-69",
+                        t: "Just Updated"
+                      }
+                    ]}
+                  </Stats>
+                </CardFooter>
+              </Card>
+            </Col>                        
           </Row>
           <Row>
             <Col xs={12} md={6}>
@@ -137,31 +164,31 @@ class Dashboard extends React.Component {
                       <tr>
                         <td>Perception Battery</td>
                         <td>Energizer 18000</td>
-                      </tr>
-                      <tr>
-                        <td>Odometry Battery</td>
-                        <td>Traxxas 2923 NiMH</td>
-                      </tr>
-                      <tr>
-                        <td>Rotational Tracker</td>
-                        <td>Sparkfun 9DOF Razor IMU</td>
-                      </tr>
-                      <tr>
-                        <td>Obstacle Detector</td>
-                        <td>Hokuyo UST-10LX</td>
-                      </tr>
-                      <tr>
-                        <td>Vision</td>
-                        <td>Logitech C9305</td>
-                      </tr>
-                      <tr>
-                        <td>Odometry</td>
-                        <td>Enertion Focbox v1.7</td>
-                      </tr>
+                      </tr>                      
                       <tr>
                         <td>ECU</td>
                         <td>Nvidia Jetson TX2</td>
+                      </tr>        
+                      <tr>
+                        <td>Camera</td>
+                        <td>Logitech C9305</td>
+                      </tr>    
+                      <tr>
+                        <td>LiDAR</td>
+                        <td>Hokuyo UST-10LX</td>
+                      </tr>  
+                      <tr>
+                        <td>IMU</td>
+                        <td>Sparkfun 9DOF Razor IMU</td>
                       </tr>
+                      <tr>
+                        <td>ESC Battery</td>
+                        <td>Traxxas 2923 NiMH</td>
+                      </tr>
+                      <tr>
+                        <td>ESC</td>
+                        <td>Enertion Focbox v1.7</td>
+                      </tr>                                                                                                
                     </tbody>
                   </Table>
                 </CardBody>
