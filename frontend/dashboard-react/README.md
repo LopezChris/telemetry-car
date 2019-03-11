@@ -10,6 +10,7 @@ Assuming you have already cloned the telemetry-car repo, open your terminal:
 
 ~~~bash
 cd $HOME/telemetry-car/frontend/dashboard-react/
+npm install
 npm start
 ~~~
 
