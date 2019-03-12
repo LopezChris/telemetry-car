@@ -1,6 +1,7 @@
 // dashRoutes[0].component calls on Dashboard component to be page rendered
 import Dashboard from "views/Dashboard/Dashboard.jsx";
 //import Sensors from "views/Sensors/Sensors.jsx";
+import Sensors from "views/Sensors/Sensors.jsx"
 
 import Icons from "views/Icons/Icons.jsx";
 import Notifications from "views/Notifications/Notifications.jsx";
@@ -22,7 +23,7 @@ var dashRoutes = [
     path: "/sensors", 
     name: "Sensors", 
     icon: "design_image", 
-    component: Icons 
+    component: Sensors 
   },
   { 
     path: "/lane-curvature", 
