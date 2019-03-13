@@ -12,7 +12,7 @@ class CarConnectedProgressBar extends React.Component {
                 <div className="text-center">50% Overall</div>
                 <Progress animated color="success" value={50} >Car Connecting to Telemetry</Progress>
                 <Table responsive>
-                    <thead className=" text-primary">
+                    <thead>
                       <tr>
                         <th>Hardware Device</th>
                         <th>Status</th>
