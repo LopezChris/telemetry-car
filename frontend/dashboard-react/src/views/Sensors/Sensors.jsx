@@ -51,14 +51,14 @@ class Sensors extends React.Component {
             />
             <div className="content">
               <Row>
-                <Col xs={12} md={12}>
+                <Col xs={12} md={6}>
                   <Card className="card-chart">
                     <CardHeader>
                       <CardCategory>Camera Visual Perception</CardCategory>
                       <CardTitle tag="h4">Camera: Logitech C930</CardTitle>
                     </CardHeader>
-                    <CardBody>
-                      <img src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/mit_racecar.jpg?token=ALSrweGNd-2i0MWfLQFHSVmvt88ISlI4ks5cjxCbwA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
+                    <CardBody className="text-center">                        
+                      <img src="https://raw.githubusercontent.com/james94/ai-edge-car/master/application/data/raw/clockwise_rightside_tracklane.chk1.012919.802pm/cam_frames/cam-19-59-42-17e9aa00-bbd9-41ca-b2ed-d6c8997a03f0.jpeg?token=ALSrwXYrS8M2FeFRTdQ1NE5wyqa-04XGks5ckEDfwA%3D%3D" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
                     </CardBody>
                     <CardFooter>
                       <Stats>
@@ -72,9 +72,7 @@ class Sensors extends React.Component {
                     </CardFooter>
                   </Card>
                 </Col>                       
-              </Row>
-              <Row>
-                <Col xs={12} md={12}>
+                <Col xs={12} md={6}>
                   <Card className="card-chart">
                     <CardHeader>
                       <CardCategory>LiDAR Mapping Environment</CardCategory>
@@ -82,8 +80,8 @@ class Sensors extends React.Component {
                         LiDAR: Hokuyo UST-10LX
                       </CardTitle>
                     </CardHeader>
-                    <CardBody>
-                      <img src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/mit_racecar.jpg?token=ALSrweGNd-2i0MWfLQFHSVmvt88ISlI4ks5cjxCbwA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
+                    <CardBody className="text-center">
+                      <img src="https://raw.githubusercontent.com/james94/ai-edge-car/master/application/data/output/image/lidar/lidar-19-59-42-2b4bf60f-1f27-46b0-abfb-1e73a1285f25.jpeg?token=ALSrwelegMxT51MHtd9JDYz3rzZz34fQks5ckELewA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={(100*0.84)+'%'} width={(100*0.84)+'%'} />
                     </CardBody>
                     <CardFooter>
                       <Stats>
@@ -99,7 +97,7 @@ class Sensors extends React.Component {
                 </Col>                   
               </Row>
               <Row>
-                <Col xs={12} md={12}>
+                <Col xs={12} md={6}>
                   <Card className="card-tasks">
                     <CardHeader>
                       <CardCategory>IMU Rotational Tracking</CardCategory>
@@ -121,9 +119,7 @@ class Sensors extends React.Component {
                     </CardFooter>
                   </Card>
                 </Col>
-              </Row>
-              <Row>
-                <Col xs={12} md={12}>
+                <Col xs={12} md={6}>
                   <Card className="card-tasks">
                     <CardHeader>
                       <CardCategory>ESC Servo Steering Angle</CardCategory>
@@ -147,7 +143,7 @@ class Sensors extends React.Component {
                 </Col>                  
               </Row>
               <Row>
-                <Col xs={12} md={12}>
+                <Col xs={12} md={6}>
                   <Card className="card-tasks">
                     <CardHeader>
                       <CardCategory>ESC Motor Wheel Speed</CardCategory>
@@ -169,9 +165,7 @@ class Sensors extends React.Component {
                     </CardFooter>
                   </Card>
                 </Col>                  
-              </Row>
-              <Row>
-                <Col xs={12} md={12}>
+                <Col xs={12} md={3}>
                   <Card className="card-tasks">
                     <CardHeader>
                       <CardCategory>Battery Level Monitor</CardCategory>
@@ -193,9 +187,7 @@ class Sensors extends React.Component {
                     </CardFooter>
                   </Card>
                 </Col>                  
-              </Row>   
-              <Row>
-                <Col xs={12} md={12}>
+                <Col xs={12} md={3}>
                   <Card className="card-tasks">
                     <CardHeader>
                       <CardCategory>Battery Level Monitor</CardCategory>
