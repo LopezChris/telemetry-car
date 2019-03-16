@@ -1,0 +1,16 @@
+import React from 'react';
+
+class DisplayAnImage extends React.Component {
+    render() {
+        return (
+            <img 
+                src={this.props.img_src}  
+                alt={this.props.alt_text} 
+                height={this.props.h} 
+                width={this.props.w} 
+            />
+        );
+    }
+}
+
+export default DisplayAnImage;
