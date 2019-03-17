@@ -18,7 +18,13 @@ cameraRouter.get('/', (req, res, next) => {
 // so, the callback is invoked and cameraFrame with index id is fetched from 
 // cameraFrames array and sent back
 cameraRouter.get('/:id', (req, res, next) => {
-    res.send(cameraFrames[req.params.id]);    
+    const cameraFrame = cameraFrames[req.params.id];
+    if(cameraFrame) {
+        res.sendFile(cameraFrame);
+    }
+    else {
+        res.status(404).send();
+    }    
 });
 
 module.exports = cameraRouter;
