@@ -20,7 +20,7 @@ cameraRouter.get('/', (req, res, next) => {
 cameraRouter.get('/:id', (req, res, next) => {
     const cameraFrame = cameraFrames[req.params.id];
     if(cameraFrame) {
-        res.sendFile(cameraFrame);
+        res.send(cameraFrame);
     }
     else {
         res.status(404).send();
