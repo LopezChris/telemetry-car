@@ -66,15 +66,11 @@ class Sensors extends React.Component {
                         w={(100)+'%'}
                       /> */}
                       {/* <DisplayAnImage sensor_dir="cam_frames" alt="" h={(100)+'%'} w={(100)+'%'}/> */}
-                      {/* <DisplayAnImage 
-                        img_src={require("../../assets/img/sensors/cam_frames/cam-19-59-42-17e9aa00-bbd9-41ca-b2ed-d6c8997a03f0.jpeg")}
-                        alt_text="Cloudera Racecar" 
-                        h={(100)+'%'} 
-                        w={(100)+'%'}
-                      /> */}
+                      <DisplayAnImage />
                       {/*<SensorSimulation data="/path/to/cam/images" />   */}                    
                       {/*<img src="https://raw.githubusercontent.com/james94/ai-edge-car/master/application/data/raw/clockwise_rightside_tracklane.chk1.012919.802pm/cam_frames/cam-19-59-42-17e9aa00-bbd9-41ca-b2ed-d6c8997a03f0.jpeg?token=ALSrwXYrS8M2FeFRTdQ1NE5wyqa-04XGks5ckEDfwA%3D%3D" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />*/}
-                      <img src={require("../../assets/img/sensors/cam_frames/cam-19-59-42-17e9aa00-bbd9-41ca-b2ed-d6c8997a03f0.jpeg")}  alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
+                      
+                      {/* <img src={require(".assets/data/input/sensors/cw_rs_tl/012919/cam_frames/cam-19-59-42-17e9aa00-bbd9-41ca-b2ed-d6c8997a03f0.jpeg")}  alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} /> */}
                     </CardBody>
                     <CardFooter>
                       <Stats>

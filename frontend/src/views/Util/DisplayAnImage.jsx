@@ -1,27 +1,38 @@
 import React from 'react';
+import Axios from 'axios';
 
-<DisplayAnImage sensor_dir="cam_frames" alt="" h={(100)+'%'} w={(100)+'%'}/>
 class DisplayAnImage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            image: ''
+            image: '', // Initialize emtpy jpeg
+            error: ''
         }
     }
 
-    // componentDidMount() {
-    //     fetch('/api/sensor/' + this.props.sensor_dir)
-    //         .then((response) => {
-    //             return response.json();
-    //         }).then(myBlob => {
-    //             let objectURL = URL.createObjectURL(myBlob);
-    //             myImg.src = objectURL;
-    //         });
-    // }
+    async getImage() {
+        try {
+            let res = await Axios.get('/api/sensor/camera/0'); // send GET request for image index 0
+            console.log('RESPONSE', res);
 
+            let image = res.data;
+            console.log('IMAGE', image);
+
+            this.setState({
+                image, error: ''
+            });
+        } catch (e) {
+            this.setState({ error: `BRUTAL FAILURE: ${e}` });
+        }
+    }
+
+    componentDidMount() {
+        this.getImage() // Do network call in componentDidMount
+    }
+    
     render() {
         return (
-            <div></div>
+            <img src={this.state.image} alt="CW_RS_TL" height={(100)+'%'} weight={(100)+'%'} />
         );
     }
 }
