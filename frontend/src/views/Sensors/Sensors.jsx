@@ -155,7 +155,7 @@ class Sensors extends React.Component {
                       <CardTitle tag="h4">ESC: Enertion Focbox v1.7</CardTitle>
                     </CardHeader>
                     <CardBody>
-                        <Speedometer sensorDevice="esc_speed" />
+                        <Speedometer fps={0.5} sensorDevice="esc_speed" />
                     </CardBody>
                     <CardFooter>
                       <hr />

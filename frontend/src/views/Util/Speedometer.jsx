@@ -7,8 +7,23 @@ class Speedometer extends React.Component {
         super(props);
         this.state = {
             escSpeeds: [], // Initialize empty escSpeeds
+            escSpeedIndex: 0,
             error: ''
         }
+        this.changeSpeed = this.changeSpeed.bind(this);
+    }
+
+    changeSpeed() {
+        this.setState(({escSpeedIndex}) => {
+            console.log("escSpeedIndex: ", escSpeedIndex);
+            let nextSpeedIndex = ++escSpeedIndex % this.state.escSpeeds.length;
+            return { escSpeedIndex: nextSpeedIndex};
+        }, () => {
+            this.timeout = setTimeout(
+                this.changeSpeed,
+                this.props.fps * 1000
+            );
+        });
     }
 
     convertRPMToMPH(escSpeedRPM) {
@@ -49,7 +64,17 @@ class Speedometer extends React.Component {
     }
 
     componentDidMount() {
-        this.getSpeeds();
+        this.getSpeeds(); // Uses Axios to fetch intial speed data from Express.js
+        this.timeout = setTimeout(
+            this.changeSpeed,
+            this.props.fps * 1000
+        );
+    }
+
+    componentWillUnmount() {
+        if(this.timeout) {
+            clearTimeout(this.timeout);
+        }
     }
 
     render() {
@@ -59,7 +84,7 @@ class Speedometer extends React.Component {
             height="300"
             units="mph"
             title="Speedometer"
-            value={this.state.escSpeeds[1]}
+            value={this.state.escSpeeds[this.state.escSpeedIndex]}
             minValue={0}
             maxValue={60}
             majorTicks={['0', '10', '20', '30', '40', '50', '60']}
