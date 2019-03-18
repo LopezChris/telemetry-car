@@ -31,19 +31,11 @@ import DisplayAnImage from "../Util/DisplayAnImage";
 import PlayVideoFromImages from "../Util/PlayVideoFromImages";
 import Speedometer from "../Util/Speedometer";
 import ServoSteering from "../Util/ServoSteering";
+import SimulateImuData from "../Util/SimulateImuData";
 
 import CarConnectedProgressBar from "components/CardElements/CarConnectedProgressBar";
 
 import { tasks } from "variables/general.jsx";
-
-const clouderaRacewayImg = (
-	<img 
-		src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/hortonworksraceway.jpg?token=ALSrwW9hO85_gwJVkv1KlrsXTkqmQ4Gjks5cjpQHwA%3D%3D"
-		alt="Cloudera Raceway"
-		width={(100*1)+'%'}
-		height={(100*1.2)+'%'}
-	/>
-);
 
 class Sensors extends React.Component {
     render() {
@@ -51,7 +43,7 @@ class Sensors extends React.Component {
             <div>
             <PanelHeader
               size="lg"
-              content={clouderaRacewayImg}
+              content={<img src="input/other/hortonworksraceway.jpg" alt="Cloudera Raceway" width={(100*1)+'%'} height={(100*1.2)+'%'} />}
             />
             <div className="content">
               <Row>
@@ -104,11 +96,33 @@ class Sensors extends React.Component {
                 <Col xs={12} md={4}>
                   <Card className="card-tasks">
                     <CardHeader>
+                      <CardCategory>ESC Servo Steering Angle</CardCategory>
+                      <CardTitle tag="h4">ESC: Enertion Focbox v1.7</CardTitle>
+                    </CardHeader>
+                    <CardBody className="text-center">
+                        <ServoSteering fps={0.5} sensorDevice="esc_steering/" />
+                    </CardBody>
+                    <CardFooter>
+                      <hr />
+                      <Stats>
+                        {[
+                          {
+                            i: "now-ui-icons loader_refresh spin",
+                            t: "Updated 3 minutes ago"
+                          }
+                        ]}
+                      </Stats>
+                    </CardFooter>
+                  </Card>
+                </Col>                
+                <Col xs={12} md={4}>
+                  <Card className="card-tasks">
+                    <CardHeader>
                       <CardCategory>IMU Rotational Tracking</CardCategory>
                       <CardTitle tag="h4">Sparkfun 9DOF Razor IMU</CardTitle>
                     </CardHeader>
                     <CardBody>
-                        <img src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/mit_racecar.jpg?token=ALSrweGNd-2i0MWfLQFHSVmvt88ISlI4ks5cjxCbwA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
+                        <SimulateImuData fps={0.5} sensorDevice="imu/" />
                     </CardBody>
                     <CardFooter>
                       <hr />
@@ -144,76 +158,8 @@ class Sensors extends React.Component {
                       </Stats>
                     </CardFooter>
                   </Card>
-                </Col>                 
-                <Col xs={12} md={4}>
-                  <Card className="card-tasks">
-                    <CardHeader>
-                      <CardCategory>ESC Servo Steering Angle</CardCategory>
-                      <CardTitle tag="h4">ESC: Enertion Focbox v1.7</CardTitle>
-                    </CardHeader>
-                    <CardBody className="text-center">
-                        <ServoSteering fps={0.5} sensorDevice="esc_steering/" />
-                    </CardBody>
-                    <CardFooter>
-                      <hr />
-                      <Stats>
-                        {[
-                          {
-                            i: "now-ui-icons loader_refresh spin",
-                            t: "Updated 3 minutes ago"
-                          }
-                        ]}
-                      </Stats>
-                    </CardFooter>
-                  </Card>
-                </Col>                  
-              </Row>
-              <Row>                 
-                <Col xs={12} md={3}>
-                  <Card className="card-tasks">
-                    <CardHeader>
-                      <CardCategory>Battery Level Monitor</CardCategory>
-                      <CardTitle tag="h4">ESC Battery: Traxxas 2923 NiMH</CardTitle>
-                    </CardHeader>
-                    <CardBody>
-                        <p>Battery</p>
-                    </CardBody>
-                    <CardFooter>
-                      <hr />
-                      <Stats>
-                        {[
-                          {
-                            i: "now-ui-icons loader_refresh spin",
-                            t: "Updated 3 minutes ago"
-                          }
-                        ]}
-                      </Stats>
-                    </CardFooter>
-                  </Card>
-                </Col>                  
-                <Col xs={12} md={3}>
-                  <Card className="card-tasks">
-                    <CardHeader>
-                      <CardCategory>Battery Level Monitor</CardCategory>
-                      <CardTitle tag="h4">Perception Battery: Energizer 18000</CardTitle>
-                    </CardHeader>
-                    <CardBody>
-                        <img src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/mit_racecar.jpg?token=ALSrweGNd-2i0MWfLQFHSVmvt88ISlI4ks5cjxCbwA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
-                    </CardBody>
-                    <CardFooter>
-                      <hr />
-                      <Stats>
-                        {[
-                          {
-                            i: "now-ui-icons loader_refresh spin",
-                            t: "Updated 3 minutes ago"
-                          }
-                        ]}
-                      </Stats>
-                    </CardFooter>
-                  </Card>
-                </Col>                  
-              </Row>                                        
+                </Col>                                   
+              </Row>                                      
             </div>
           </div>            
         );

@@ -15,6 +15,10 @@ app.use('/api/sensor/camera', cameraRouter);
 const lidarRouter = require('./src/routes/api/sensor/lidar.js');
 app.use('/api/sensor/lidar', lidarRouter);
 
+// Create imuRouter to handle all requests beginning with /api/sensor/imu
+const imuRouter = require('./src/routes/api/sensor/imu.js');
+app.use('/api/sensor/imu', imuRouter);
+
 // Create escSpeedRouter to handle all requests beginning with /api/sensor/esc_speed
 const escSpeedRouter = require('./src/routes/api/sensor/esc_speed.js');
 app.use('/api/sensor/esc_speed', escSpeedRouter);

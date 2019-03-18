@@ -46,7 +46,7 @@ class SelfDriving extends React.Component {
       <div>
         <PanelHeader
           size="lg"
-          content={clouderaRacewayImg}
+          content={<img src="input/other/hortonworksraceway.jpg" alt="Cloudera Raceway" width={(100*1)+'%'} height={(100*1.2)+'%'} />}
         />
         <div className="content">
           <Row>

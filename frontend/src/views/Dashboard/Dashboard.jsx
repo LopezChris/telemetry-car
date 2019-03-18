@@ -31,22 +31,13 @@ import {
 
 import { tasks } from "variables/general.jsx";
 
-const clouderaRacewayImg = (
-	<img 
-		src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/hortonworksraceway.jpg?token=ALSrwW9hO85_gwJVkv1KlrsXTkqmQ4Gjks5cjpQHwA%3D%3D"
-		alt="Cloudera Raceway"
-		width={(100*1)+'%'}
-		height={(100*1.2)+'%'}
-	/>
-);
-
 class Dashboard extends React.Component {
   render() {
     return (
       <div>
         <PanelHeader
           size="lg"
-          content={clouderaRacewayImg}
+          content={<img src="input/other/hortonworksraceway.jpg" alt="Cloudera Raceway" width={(100*1)+'%'} height={(100*1.2)+'%'} />}
         />
         <div className="content">
           <Row>
@@ -74,7 +65,8 @@ class Dashboard extends React.Component {
                   </UncontrolledDropdown>
                 </CardHeader>
                 <CardBody>
-                  <img src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/mit_racecar.jpg?token=ALSrweGNd-2i0MWfLQFHSVmvt88ISlI4ks5cjxCbwA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
+
+                  <img src="input/other/mit_racecar.jpg" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
                 </CardBody>
                 <CardFooter>
                   <Stats>

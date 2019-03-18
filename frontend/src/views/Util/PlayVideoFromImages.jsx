@@ -30,10 +30,10 @@ class PlayVideoFromImages extends React.Component {
         try {
             let sensorDevice = this.props.sensorDevice;
             let res = await Axios.get('/api/sensor/' + sensorDevice); // send GET request for image index 0
-            console.log('RESPONSE', res);
+            // console.log('RESPONSE', res);
 
             let images = res.data;
-            console.log('IMAGES', images);
+            // console.log('IMAGES', images);
 
             this.setState({
                 images, error: ''

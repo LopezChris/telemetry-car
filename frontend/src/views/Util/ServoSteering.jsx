@@ -6,7 +6,7 @@ class ServoSteering extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            escSteering: [], // Initialize empty escSteering
+            escSteerings: [], // Initialize empty escSteering
             escSteeringIndex: 0,
             error: ''
         }
@@ -15,8 +15,9 @@ class ServoSteering extends React.Component {
 
     changeSteering() {
         this.setState(({escSteeringIndex}) => {
-            //console.log("escSteeringIndex: ", escSteeringIndex);
-            let nextSteeringIndex = ++escSteeringIndex % this.state.escSteering.length;
+            // console.log("18. escSteeringIndex: ", escSteeringIndex);
+            // console.log("19. this.state.escSteering.length:", this.state.escSteerings.length);
+            let nextSteeringIndex = ++escSteeringIndex % this.state.escSteerings.length;
             return { escSteeringIndex: nextSteeringIndex};
         }, () => {
             this.timeout = setTimeout(
@@ -29,8 +30,10 @@ class ServoSteering extends React.Component {
     // Convert Rad/sec^2 to Deg/sec^2
     convertRadToDegPerS2(steeringRadPerSecSq) {
         //1 deg/s^2 = 0.0174 rad/s^2
+        //console.log("32. steeringRadPerSecSq: ", steeringRadPerSecSq);
         const degPerSecSqEquivalent = 0.0174532925;
         const steeringDegPerSecSq = Math.floor(steeringRadPerSecSq * (1/degPerSecSqEquivalent));
+        //console.log("35. steeringDegPerSecSq: ", steeringDegPerSecSq);
         return steeringDegPerSecSq;
     }
 
@@ -38,22 +41,23 @@ class ServoSteering extends React.Component {
         try {
             let sensorDevice = this.props.sensorDevice;
             let res = await Axios.get('/api/sensor/' + sensorDevice);
-            console.log('Steering RESPONSE', res);
+            // console.log('42. Steering RESPONSE', res);
 
-            let escSteering = res.data;
-            console.log('escSteering: ', escSteering);
+            let escSteerings = res.data;
+            // console.log('45. escSteering: ', escSteerings);
 
             // Extract value from string key value, then store into array
             let escSteeringCleaned = []; 
             let steeringAnglesDSecSq = []; //Store Steering Angle conversions
-            for(let i = 0; i < escSteering.length; i++) {
-                let split = escSteering[i].split(':');
+            for(let i = 0; i < escSteerings.length; i++) {
+                let split = escSteerings[i].split(':');
                 escSteeringCleaned[i] = split[1].trim();
                 steeringAnglesDSecSq[i] = this.convertRadToDegPerS2(escSteeringCleaned[i]);
             }
 
-            this.setSteeringAngles({
-                escSteering: steeringAnglesDSecSq, error: ''
+            // console.log("57. steeringAnglesDSecSq: ", steeringAnglesDSecSq);
+            this.setState({
+                escSteerings: steeringAnglesDSecSq, error: ''
             });
         } catch(e) {
             this.setState({ error: `BRUTAL FAILURE: ${e}`});
@@ -79,12 +83,12 @@ class ServoSteering extends React.Component {
             <RadialGauge
             width="300"
             height="300"
-            units="mph"
-            title="Steering"
-            value={this.state.escSteering[this.state.escSteeringIndex]}
+            units="deg/s^2"
+            title="SteeringAngle"
+            value={this.state.escSteerings[this.state.escSteeringIndex]}
             minValue={0}
-            maxValue={60}
-            majorTicks={['0', '10', '20', '30', '40', '50', '60']}
+            maxValue={80}
+            majorTicks={['0', '10', '20', '30', '40', '50', '60', '70', '80']}
             minorTicks={5}
             strokeTicks="true"
             highlights='[{"from": 0, "to": 50, "color": "rgba(0, 255, 0, .15)"},
@@ -93,7 +97,7 @@ class ServoSteering extends React.Component {
             colorMinorTicks="#ddd"
             colorTitle="#fff"
             colorUnits="#ccc"
-            colorNumbers="#00FA9A"
+            colorNumbers="#37FDFC"
             colorPlate="#222"
             borderShadowWidth="0"
             borders="true"

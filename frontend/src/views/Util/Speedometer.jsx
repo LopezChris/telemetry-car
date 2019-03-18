@@ -39,13 +39,12 @@ class Speedometer extends React.Component {
         try {
             let sensorDevice = this.props.sensorDevice;
             let res = await Axios.get('/api/sensor/' + sensorDevice);
-            console.log('RESPONSE', res);
+            // console.log('RESPONSE', res);
 
             let escSpeeds = res.data;
-            console.log('escSpeedsRPM: ', escSpeeds);
+            // console.log('escSpeedsRPM: ', escSpeeds);
 
             // Extract value from string key value, then store into array
-            let obj = {};
             let escSpeedsCleaned = []; 
             let escSpeedMPH = [];
             for(let i = 0; i < escSpeeds.length; i++) {
@@ -54,7 +53,7 @@ class Speedometer extends React.Component {
                 escSpeedMPH[i] = this.convertRPMToMPH(escSpeedsCleaned[i]);
             }
 
-            console.log('escSpeedMPH: ', escSpeedMPH);
+            // console.log('escSpeedMPH: ', escSpeedMPH);
             this.setState({
                 escSpeeds: escSpeedMPH, error: ''
             });
