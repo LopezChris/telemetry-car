@@ -19,6 +19,8 @@ import {
 import { Line, Bar } from "react-chartjs-2";
 // function that returns a color based on an interval of numbers
 
+import { RadialGauge, LinearGauge } from 'react-canvas-gauges';
+
 import {
     dashboardPanelChart,
     dashboardShippedProductsChart,
@@ -154,7 +156,15 @@ class Sensors extends React.Component {
                       <CardTitle tag="h4">ESC: Enertion Focbox v1.7</CardTitle>
                     </CardHeader>
                     <CardBody>
-                        <img src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/mit_racecar.jpg?token=ALSrweGNd-2i0MWfLQFHSVmvt88ISlI4ks5cjxCbwA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
+                        <RadialGauge
+                          units="mph"
+                          title="Speedometer"
+                          value={10}
+                          minValue={0}
+                          maxValue={60}
+                          majorTicks={['0', '10', '20', '30', '40', '50', '60']}
+                          minorTicks={5}
+                        ></RadialGauge>
                     </CardBody>
                     <CardFooter>
                       <hr />
