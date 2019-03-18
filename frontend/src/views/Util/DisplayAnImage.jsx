@@ -12,7 +12,9 @@ class DisplayAnImage extends React.Component {
 
     async getImage() {
         try {
-            let res = await Axios.get('/api/sensor/camera/0'); // send GET request for image index 0
+            let sensorDevice = this.props.sensorDevice;
+            let imageIndex = this.props.imageIndex;
+            let res = await Axios.get('/api/sensor/' + sensorDevice + imageIndex); // send GET request for image index 0
             console.log('RESPONSE', res);
 
             let image = res.data;
