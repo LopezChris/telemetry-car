@@ -9,15 +9,19 @@ class ModuleActiveStatus extends React.Component {
     render() {
         return (
             <div>
-                <Button color="info" style={{fontSize:"20px"}}>Enable All Modules</Button>
+                <Button color="info" style={{fontSize:"20px"}}>Enable All Skills</Button>
                 <Table responsive>
                     <thead>
                       <tr>
-                        <th>Module</th>
+                        <th>Skill</th>
                         <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                        <td style={{fontSize:"20px"}}>Lane-Detection</td>
+                        <td><Button color="danger" style={{fontSize:"20px"}}>Disabled</Button></td>
+                      </tr>                      
                       <tr>
                         <td style={{fontSize:"20px"}}>Lane-Curvature</td>
                         <td><Button color="danger" style={{fontSize:"20px"}}>Disabled</Button></td>

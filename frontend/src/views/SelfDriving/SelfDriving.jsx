@@ -53,9 +53,9 @@ class SelfDriving extends React.Component {
             <Col xs={12} md={12}>
               <Card className="card-chart">
                 <CardHeader>
-                  <CardCategory>Self Driving Car Modules</CardCategory>
+                  <CardCategory>Self Driving Car Skills</CardCategory>
                   <CardTitle tag="h4">
-                      Enable/Disable Modules
+                      Enable/Disable Skills
                   </CardTitle>
                 </CardHeader>
                 <CardBody>

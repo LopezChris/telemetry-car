@@ -21,7 +21,7 @@ const imuRouter = express.Router();
 
 // Created route for imuRouter that'll send all imu array for a GET Request
 imuRouter.get('/', (req, res, next) => {
-    console.log(imu);
+    // console.log(imu);
     res.send(imu);
 });
 
