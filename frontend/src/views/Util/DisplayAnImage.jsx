@@ -34,7 +34,7 @@ class DisplayAnImage extends React.Component {
     
     render() {
         return (
-            <img src={this.state.image} alt="CW_RS_TL" height={(100)+'%'} weight={(100)+'%'} />
+            <img src={this.state.image} alt="CW_RS_TL" height={this.props.height} weight={this.props.width} />
         );
     }
 }

@@ -28,6 +28,7 @@ import {
 
 import { PanelHeader, Stats, CardCategory, Tasks } from "components";
 import DisplayAnImage from "../Util/DisplayAnImage";
+import PlayVideoFromImages from "../Util/PlayVideoFromImages";
 
 import CarConnectedProgressBar from "components/CardElements/CarConnectedProgressBar";
 
@@ -59,18 +60,7 @@ class Sensors extends React.Component {
                       <CardTitle tag="h4">Camera: Logitech C930</CardTitle>
                     </CardHeader>
                     <CardBody className="text-center"> 
-                      {/* <PlayVideoFromImages 
-                        sensor_dir="cam_frames"
-                        alt="Racecar Video" 
-                        h={(100)+'%'}
-                        w={(100)+'%'}
-                      /> */}
-                      {/* <DisplayAnImage sensor_dir="cam_frames" alt="" h={(100)+'%'} w={(100)+'%'}/> */}
-                      <DisplayAnImage sensorDevice="camera/" imageIndex="0" />
-                      {/*<SensorSimulation data="/path/to/cam/images" />   */}                    
-                      {/*<img src="https://raw.githubusercontent.com/james94/ai-edge-car/master/application/data/raw/clockwise_rightside_tracklane.chk1.012919.802pm/cam_frames/cam-19-59-42-17e9aa00-bbd9-41ca-b2ed-d6c8997a03f0.jpeg?token=ALSrwXYrS8M2FeFRTdQ1NE5wyqa-04XGks5ckEDfwA%3D%3D" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />*/}
-                      
-                      {/* <img src={require(".assets/data/input/sensors/cw_rs_tl/012919/cam_frames/cam-19-59-42-17e9aa00-bbd9-41ca-b2ed-d6c8997a03f0.jpeg")}  alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} /> */}
+                      <PlayVideoFromImages fps={0.5} sensorDevice="camera/" height={(100)+'%'} width={(100)+'%'} />
                     </CardBody>
                     <CardFooter>
                       <Stats>
@@ -93,7 +83,8 @@ class Sensors extends React.Component {
                       </CardTitle>
                     </CardHeader>
                     <CardBody className="text-center">
-                      <img src="https://raw.githubusercontent.com/james94/ai-edge-car/master/application/data/output/image/lidar/lidar-19-59-42-2b4bf60f-1f27-46b0-abfb-1e73a1285f25.jpeg?token=ALSrwelegMxT51MHtd9JDYz3rzZz34fQks5ckELewA%3D%3D" alt="E2AI-Car-SDV1" height={(100*0.84)+'%'} width={(100*0.84)+'%'} />
+                      <DisplayAnImage sensorDevice="camera/" imageIndex="0" />
+                      {/* <img src="https://raw.githubusercontent.com/james94/ai-edge-car/master/application/data/output/image/lidar/lidar-19-59-42-2b4bf60f-1f27-46b0-abfb-1e73a1285f25.jpeg?token=ALSrwelegMxT51MHtd9JDYz3rzZz34fQks5ckELewA%3D%3D" alt="E2AI-Car-SDV1" height={(100*0.84)+'%'} width={(100*0.84)+'%'} /> */}
                     </CardBody>
                     <CardFooter>
                       <Stats>
