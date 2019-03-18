@@ -15,6 +15,10 @@ app.use('/api/sensor/camera', cameraRouter);
 const lidarRouter = require('./src/routes/api/sensor/lidar.js');
 app.use('/api/sensor/lidar', lidarRouter);
 
+// Create escSpeedRouter to handle all requests beginning with /api/sensor/esc_speed
+const escSpeedRouter = require('./src/routes/api/sensor/esc_speed.js');
+app.use('/api/sensor/esc_speed', escSpeedRouter);
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`);
 });

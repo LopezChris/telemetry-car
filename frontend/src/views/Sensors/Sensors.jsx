@@ -19,8 +19,6 @@ import {
 import { Line, Bar } from "react-chartjs-2";
 // function that returns a color based on an interval of numbers
 
-import { RadialGauge, LinearGauge } from 'react-canvas-gauges';
-
 import {
     dashboardPanelChart,
     dashboardShippedProductsChart,
@@ -31,6 +29,7 @@ import {
 import { PanelHeader, Stats, CardCategory, Tasks } from "components";
 import DisplayAnImage from "../Util/DisplayAnImage";
 import PlayVideoFromImages from "../Util/PlayVideoFromImages";
+import Speedometer from "../Util/Speedometer";
 
 import CarConnectedProgressBar from "components/CardElements/CarConnectedProgressBar";
 
@@ -156,50 +155,7 @@ class Sensors extends React.Component {
                       <CardTitle tag="h4">ESC: Enertion Focbox v1.7</CardTitle>
                     </CardHeader>
                     <CardBody>
-                        <RadialGauge
-                          width="300"
-                          height="300"
-                          units="mph"
-                          title="Speedometer"
-                          value={0}
-                          minValue={0}
-                          maxValue={60}
-                          majorTicks={['0', '10', '20', '30', '40', '50', '60']}
-                          minorTicks={5}
-                          strokeTicks="true"
-                          highlights='[{"from": 0, "to": 50, "color": "rgba(0, 255, 0, .15)"},
-                                       {"from": 50, "to": 60, "color": "rgba(0, 0, 255, .25)"}]'
-                          colorMajorTicks="#f5f5f5"
-                          colorMinorTicks="#ddd"
-                          colorTitle="#fff"
-                          colorUnits="#ccc"
-                          colorNumbers="#00FA9A"
-                          colorPlate="#222"
-                          borderShadowWidth="0"
-                          borders="true"
-                          needleType="arrow"
-                          needleWidth="2"
-                          needleCircleSize="7"
-                          needleCircleOuter="true"
-                          needleCircleInner="false"
-                          animationDurection="1500"
-                          animationRule="linear"
-                          colorBorderOuter="#333"
-                          colorBorderOuterEnd="#111"
-                          colorBorderMiddle="#222"
-                          colorBorderMiddleEnd="#111"
-                          colorBorderInner="#111"
-                          colorBorderInnerEnd="#333" 
-                          colorNeedleShadowDown="#333"
-                          colorNeedleCircleOuter="#333" 
-                          colorNeedleCircleOuterEnd="#111"
-                          colorNeedleCircleInner="#111" 
-                          colorNeedleCircleInnerEnd="#222"
-                          valueBoxBorderRadius="0"
-                          colorValueBoxRect="#222"
-                          colorValueBoxRectEnd="#333"
-                          
-                        ></RadialGauge>
+                        <Speedometer sensorDevice="esc_speed" />
                     </CardBody>
                     <CardFooter>
                       <hr />
@@ -221,7 +177,7 @@ class Sensors extends React.Component {
                       <CardTitle tag="h4">ESC Battery: Traxxas 2923 NiMH</CardTitle>
                     </CardHeader>
                     <CardBody>
-                        <img src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/mit_racecar.jpg?token=ALSrweGNd-2i0MWfLQFHSVmvt88ISlI4ks5cjxCbwA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
+                        <p>Battery</p>
                     </CardBody>
                     <CardFooter>
                       <hr />
