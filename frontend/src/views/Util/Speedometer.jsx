@@ -11,6 +11,15 @@ class Speedometer extends React.Component {
         }
     }
 
+    convertRPMToMPH(escSpeedRPM) {
+        // Wheel Diameter Specs Provided by Traxxas Rally Car platform
+        const wheelDiameter = 2.2 // Outer Inches
+        const wheelCircumference = 3.14 * wheelDiameter;
+        const speedMPH = Math.floor((1/5280)*(escSpeedRPM/1)*(60/1)*wheelCircumference*(1/12));
+        // console.log('speedMPH: ', speedMPH);
+        return speedMPH;
+    }
+
     async getSpeeds() {
         try {
             let sensorDevice = this.props.sensorDevice;
@@ -18,17 +27,21 @@ class Speedometer extends React.Component {
             console.log('RESPONSE', res);
 
             let escSpeeds = res.data;
-            console.log('escSpeeds', escSpeeds);
+            console.log('escSpeedsRPM: ', escSpeeds);
 
-            // Convert string array into key value pair object
-            let escSpeedsCleaned = {};
+            // Extract value from string key value, then store into array
+            let obj = {};
+            let escSpeedsCleaned = []; 
+            let escSpeedMPH = [];
             for(let i = 0; i < escSpeeds.length; i++) {
                 let split = escSpeeds[i].split(':');
-                escSpeedsCleaned[split[0].trim() + '_' + i] = split[1].trim();
+                escSpeedsCleaned[i] = split[1].trim();
+                escSpeedMPH[i] = this.convertRPMToMPH(escSpeedsCleaned[i])
             }
 
+            console.log('escSpeedMPH: ', escSpeedMPH);
             this.setState({
-                escSpeeds: escSpeedsCleaned, error: ''
+                escSpeeds: escSpeedMPH, error: ''
             });
         } catch(e) {
             this.setState({ error: `BRUTAL FAILURE: ${e}`});
@@ -46,7 +59,7 @@ class Speedometer extends React.Component {
             height="300"
             units="mph"
             title="Speedometer"
-            value={0}
+            value={this.state.escSpeeds[1]}
             minValue={0}
             maxValue={60}
             majorTicks={['0', '10', '20', '30', '40', '50', '60']}
