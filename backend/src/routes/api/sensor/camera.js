@@ -10,12 +10,15 @@ const staticAssetsCameraPath = 'input/sensors/cw_rs_tl/012919/cam_frames/'
 
 let cameraFrames = [];
 cameraFrames = fs.readdirSync(appDirFromRoot + "/src/assets/data/input/sensors/cw_rs_tl/012919/cam_frames/");
+for(let i = 0; i < cameraFrames.length; i++) {
+    cameraFrames[i] = staticAssetsCameraPath + cameraFrames[i];
+}
 
 const cameraRouter = express.Router();
 
 // Created route for cameraRouter that'll send all cameraFrames for a GET request
 cameraRouter.get('/', (req, res, next) => {
-    res.send(staticAssetsCameraPath + cameraFrames);
+    res.send(cameraFrames);
 });
 
 // Created route for cameraRouter that'll send a cameraFrame for a GET request
@@ -26,7 +29,7 @@ cameraRouter.get('/', (req, res, next) => {
 cameraRouter.get('/:id', (req, res, next) => {
     const cameraFrame = cameraFrames[req.params.id];
     if(cameraFrame) {
-        res.send(staticAssetsCameraPath + cameraFrame);
+        res.send(cameraFrame);
     }
     else {
         res.status(404).send();
