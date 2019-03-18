@@ -157,13 +157,48 @@ class Sensors extends React.Component {
                     </CardHeader>
                     <CardBody>
                         <RadialGauge
+                          width="300"
+                          height="300"
                           units="mph"
                           title="Speedometer"
-                          value={10}
+                          value={0}
                           minValue={0}
                           maxValue={60}
                           majorTicks={['0', '10', '20', '30', '40', '50', '60']}
                           minorTicks={5}
+                          strokeTicks="true"
+                          highlights='[{"from": 0, "to": 50, "color": "rgba(0, 255, 0, .15)"},
+                                       {"from": 50, "to": 60, "color": "rgba(0, 0, 255, .25)"}]'
+                          colorMajorTicks="#f5f5f5"
+                          colorMinorTicks="#ddd"
+                          colorTitle="#fff"
+                          colorUnits="#ccc"
+                          colorNumbers="#00FA9A"
+                          colorPlate="#222"
+                          borderShadowWidth="0"
+                          borders="true"
+                          needleType="arrow"
+                          needleWidth="2"
+                          needleCircleSize="7"
+                          needleCircleOuter="true"
+                          needleCircleInner="false"
+                          animationDurection="1500"
+                          animationRule="linear"
+                          colorBorderOuter="#333"
+                          colorBorderOuterEnd="#111"
+                          colorBorderMiddle="#222"
+                          colorBorderMiddleEnd="#111"
+                          colorBorderInner="#111"
+                          colorBorderInnerEnd="#333" 
+                          colorNeedleShadowDown="#333"
+                          colorNeedleCircleOuter="#333" 
+                          colorNeedleCircleOuterEnd="#111"
+                          colorNeedleCircleInner="#111" 
+                          colorNeedleCircleInnerEnd="#222"
+                          valueBoxBorderRadius="0"
+                          colorValueBoxRect="#222"
+                          colorValueBoxRectEnd="#333"
+                          
                         ></RadialGauge>
                     </CardBody>
                     <CardFooter>
