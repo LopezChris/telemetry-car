@@ -60,7 +60,7 @@ class Sensors extends React.Component {
                       <CardTitle tag="h4">Camera: Logitech C930</CardTitle>
                     </CardHeader>
                     <CardBody className="text-center"> 
-                      <PlayVideoFromImages fps={0.5} sensorDevice="camera/" height={(100)+'%'} width={(100)+'%'} />
+                      <PlayVideoFromImages fps={0.5} sensorDevice="camera/" alt="Camera CW_RS_TL Video" height={(100)+'%'} width={(100)+'%'} />
                     </CardBody>
                     <CardFooter>
                       <Stats>
@@ -83,7 +83,8 @@ class Sensors extends React.Component {
                       </CardTitle>
                     </CardHeader>
                     <CardBody className="text-center">
-                      <DisplayAnImage sensorDevice="camera/" imageIndex="0" />
+                      <PlayVideoFromImages fps={0.5} sensorDevice="lidar/" height={(100*0.84)+'%'} width={(100*0.84)+'%'} />
+                      {/* <DisplayAnImage sensorDevice="camera/" imageIndex="0" /> */}
                       {/* <img src="https://raw.githubusercontent.com/james94/ai-edge-car/master/application/data/output/image/lidar/lidar-19-59-42-2b4bf60f-1f27-46b0-abfb-1e73a1285f25.jpeg?token=ALSrwelegMxT51MHtd9JDYz3rzZz34fQks5ckELewA%3D%3D" alt="E2AI-Car-SDV1" height={(100*0.84)+'%'} width={(100*0.84)+'%'} /> */}
                     </CardBody>
                     <CardFooter>

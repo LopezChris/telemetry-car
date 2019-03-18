@@ -65,7 +65,7 @@ class PlayVideoFromImages extends React.Component {
     //     let imgSrcPath = this.state.images.path + this.state.images.filenames[0];
         return (
             <img src={this.state.images[this.state.imageIndex]} 
-                 alt="CW_RS_TL Video" 
+                 alt={this.props.alt} 
                  height={this.props.height} 
                  weight={this.props.width} 
             />
