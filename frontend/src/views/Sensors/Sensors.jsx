@@ -30,6 +30,7 @@ import { PanelHeader, Stats, CardCategory, Tasks } from "components";
 import DisplayAnImage from "../Util/DisplayAnImage";
 import PlayVideoFromImages from "../Util/PlayVideoFromImages";
 import Speedometer from "../Util/Speedometer";
+import ServoSteering from "../Util/ServoSteering";
 
 import CarConnectedProgressBar from "components/CardElements/CarConnectedProgressBar";
 
@@ -85,8 +86,6 @@ class Sensors extends React.Component {
                     </CardHeader>
                     <CardBody className="text-center">
                       <PlayVideoFromImages fps={0.5} sensorDevice="lidar/" height={(100*0.84)+'%'} width={(100*0.84)+'%'} />
-                      {/* <DisplayAnImage sensorDevice="camera/" imageIndex="0" /> */}
-                      {/* <img src="https://raw.githubusercontent.com/james94/ai-edge-car/master/application/data/output/image/lidar/lidar-19-59-42-2b4bf60f-1f27-46b0-abfb-1e73a1285f25.jpeg?token=ALSrwelegMxT51MHtd9JDYz3rzZz34fQks5ckELewA%3D%3D" alt="E2AI-Car-SDV1" height={(100*0.84)+'%'} width={(100*0.84)+'%'} /> */}
                     </CardBody>
                     <CardFooter>
                       <Stats>
@@ -102,7 +101,7 @@ class Sensors extends React.Component {
                 </Col>                   
               </Row>
               <Row>
-                <Col xs={12} md={6}>
+                <Col xs={12} md={4}>
                   <Card className="card-tasks">
                     <CardHeader>
                       <CardCategory>IMU Rotational Tracking</CardCategory>
@@ -124,14 +123,36 @@ class Sensors extends React.Component {
                     </CardFooter>
                   </Card>
                 </Col>
-                <Col xs={12} md={6}>
+                <Col xs={12} md={4}>
+                  <Card className="card-tasks">
+                    <CardHeader>
+                      <CardCategory>ESC Motor Wheel Speed</CardCategory>
+                      <CardTitle tag="h4">ESC: Enertion Focbox v1.7</CardTitle>
+                    </CardHeader>
+                    <CardBody className="text-center">
+                        <Speedometer fps={0.5} sensorDevice="esc_speed" />
+                    </CardBody>
+                    <CardFooter>
+                      <hr />
+                      <Stats>
+                        {[
+                          {
+                            i: "now-ui-icons loader_refresh spin",
+                            t: "Updated 3 minutes ago"
+                          }
+                        ]}
+                      </Stats>
+                    </CardFooter>
+                  </Card>
+                </Col>                 
+                <Col xs={12} md={4}>
                   <Card className="card-tasks">
                     <CardHeader>
                       <CardCategory>ESC Servo Steering Angle</CardCategory>
                       <CardTitle tag="h4">ESC: Enertion Focbox v1.7</CardTitle>
                     </CardHeader>
-                    <CardBody>
-                        <img src="https://raw.githubusercontent.com/james94/telemetry-car/dev/frontend/dashboard-react/src/assets/img/dashboard/mit_racecar.jpg?token=ALSrweGNd-2i0MWfLQFHSVmvt88ISlI4ks5cjxCbwA%3D%3D" alt="E2AI-Car-SDV1" alt="Cloudera Racecar" height={(100)+'%'} width={(100)+'%'} />
+                    <CardBody className="text-center">
+                        <ServoSteering fps={0.5} sensorDevice="esc_steering/" />
                     </CardBody>
                     <CardFooter>
                       <hr />
@@ -147,29 +168,7 @@ class Sensors extends React.Component {
                   </Card>
                 </Col>                  
               </Row>
-              <Row>
-                <Col xs={12} md={6}>
-                  <Card className="card-tasks">
-                    <CardHeader>
-                      <CardCategory>ESC Motor Wheel Speed</CardCategory>
-                      <CardTitle tag="h4">ESC: Enertion Focbox v1.7</CardTitle>
-                    </CardHeader>
-                    <CardBody>
-                        <Speedometer fps={0.5} sensorDevice="esc_speed" />
-                    </CardBody>
-                    <CardFooter>
-                      <hr />
-                      <Stats>
-                        {[
-                          {
-                            i: "now-ui-icons loader_refresh spin",
-                            t: "Updated 3 minutes ago"
-                          }
-                        ]}
-                      </Stats>
-                    </CardFooter>
-                  </Card>
-                </Col>                  
+              <Row>                 
                 <Col xs={12} md={3}>
                   <Card className="card-tasks">
                     <CardHeader>

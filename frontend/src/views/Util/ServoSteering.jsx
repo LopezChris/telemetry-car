@@ -1,62 +1,59 @@
 import React from 'react';
 import Axios from 'axios';
-import { RadialGauge, LinearGauge } from 'react-canvas-gauges';
+import { RadialGauge } from 'react-canvas-gauges';
 
-class Speedometer extends React.Component {
+class ServoSteering extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            escSpeeds: [], // Initialize empty escSpeeds
-            escSpeedIndex: 0,
+            escSteering: [], // Initialize empty escSteering
+            escSteeringIndex: 0,
             error: ''
         }
-        this.changeSpeed = this.changeSpeed.bind(this);
+        this.changeSteering = this.changeSteering.bind(this);
     }
 
-    changeSpeed() {
-        this.setState(({escSpeedIndex}) => {
-            //console.log("escSpeedIndex: ", escSpeedIndex);
-            let nextSpeedIndex = ++escSpeedIndex % this.state.escSpeeds.length;
-            return { escSpeedIndex: nextSpeedIndex};
+    changeSteering() {
+        this.setState(({escSteeringIndex}) => {
+            //console.log("escSteeringIndex: ", escSteeringIndex);
+            let nextSteeringIndex = ++escSteeringIndex % this.state.escSteering.length;
+            return { escSteeringIndex: nextSteeringIndex};
         }, () => {
             this.timeout = setTimeout(
-                this.changeSpeed,
+                this.changeSteering,
                 this.props.fps * 1000
             );
         });
     }
 
-    convertRPMToMPH(escSpeedRPM) {
-        // Wheel Diameter Specs Provided by Traxxas Rally Car platform
-        const wheelDiameter = 2.2 // Outer Inches
-        const wheelCircumference = 3.14 * wheelDiameter;
-        const speedMPH = Math.floor((1/5280)*(escSpeedRPM/1)*(60/1)*wheelCircumference*(1/12));
-        // console.log('speedMPH: ', speedMPH);
-        return speedMPH;
+    // Convert Rad/sec^2 to Deg/sec^2
+    convertRadToDegPerS2(steeringRadPerSecSq) {
+        //1 deg/s^2 = 0.0174 rad/s^2
+        const degPerSecSqEquivalent = 0.0174532925;
+        const steeringDegPerSecSq = Math.floor(steeringRadPerSecSq * (1/degPerSecSqEquivalent));
+        return steeringDegPerSecSq;
     }
 
-    async getSpeeds() {
+    async getSteeringAngles() {
         try {
             let sensorDevice = this.props.sensorDevice;
             let res = await Axios.get('/api/sensor/' + sensorDevice);
-            console.log('RESPONSE', res);
+            console.log('Steering RESPONSE', res);
 
-            let escSpeeds = res.data;
-            console.log('escSpeedsRPM: ', escSpeeds);
+            let escSteering = res.data;
+            console.log('escSteering: ', escSteering);
 
             // Extract value from string key value, then store into array
-            let obj = {};
-            let escSpeedsCleaned = []; 
-            let escSpeedMPH = [];
-            for(let i = 0; i < escSpeeds.length; i++) {
-                let split = escSpeeds[i].split(':');
-                escSpeedsCleaned[i] = split[1].trim();
-                escSpeedMPH[i] = this.convertRPMToMPH(escSpeedsCleaned[i]);
+            let escSteeringCleaned = []; 
+            let steeringAnglesDSecSq = []; //Store Steering Angle conversions
+            for(let i = 0; i < escSteering.length; i++) {
+                let split = escSteering[i].split(':');
+                escSteeringCleaned[i] = split[1].trim();
+                steeringAnglesDSecSq[i] = this.convertRadToDegPerS2(escSteeringCleaned[i]);
             }
 
-            console.log('escSpeedMPH: ', escSpeedMPH);
-            this.setState({
-                escSpeeds: escSpeedMPH, error: ''
+            this.setSteeringAngles({
+                escSteering: steeringAnglesDSecSq, error: ''
             });
         } catch(e) {
             this.setState({ error: `BRUTAL FAILURE: ${e}`});
@@ -64,9 +61,9 @@ class Speedometer extends React.Component {
     }
 
     componentDidMount() {
-        this.getSpeeds(); // Uses Axios to fetch intial speed data from Express.js
+        this.getSteeringAngles(); // Uses Axios to fetch intial steering data from Express.js
         this.timeout = setTimeout(
-            this.changeSpeed,
+            this.changeSteering,
             this.props.fps * 1000
         );
     }
@@ -83,8 +80,8 @@ class Speedometer extends React.Component {
             width="300"
             height="300"
             units="mph"
-            title="Speedometer"
-            value={this.state.escSpeeds[this.state.escSpeedIndex]}
+            title="Steering"
+            value={this.state.escSteering[this.state.escSteeringIndex]}
             minValue={0}
             maxValue={60}
             majorTicks={['0', '10', '20', '30', '40', '50', '60']}
@@ -126,4 +123,4 @@ class Speedometer extends React.Component {
     }
 }
 
-export default Speedometer;
+export default ServoSteering;

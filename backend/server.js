@@ -19,6 +19,10 @@ app.use('/api/sensor/lidar', lidarRouter);
 const escSpeedRouter = require('./src/routes/api/sensor/esc_speed.js');
 app.use('/api/sensor/esc_speed', escSpeedRouter);
 
+// Create escSteeringRouter to handle all requests beginning with /api/sensor/esc_steering
+const escSteeringRouter = require('./src/routes/api/sensor/esc_steering.js');
+app.use('/api/sensor/esc_steering', escSteeringRouter);
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`);
 });
