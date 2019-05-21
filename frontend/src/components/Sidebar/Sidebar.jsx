@@ -32,7 +32,7 @@ class Sidebar extends React.Component {
   }
   render() {
     return (
-      <div className="sidebar" data-color="blue">
+      <div className="sidebar" data-color="orange">
         <div className="logo">
           <a
             href="https://www.cloudera.com/"
@@ -46,7 +46,7 @@ class Sidebar extends React.Component {
             href="https://www.cloudera.com/"
             className="simple-text logo-normal"
           >
-            Cloudera E2AI Car
+            CSDV TELEMETRY
           </a>
         </div>
         <div className="sidebar-wrapper" ref="sidebar">
